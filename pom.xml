@@ -23,7 +23,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>commons-email2</artifactId>
-    <version>2.0.0-SNAPSHOT</version>
+    <version>2.0.0-AXWAY-SNAPSHOT</version>
     <name>Apache Commons Email</name>
 
     <inceptionYear>2001</inceptionYear>
@@ -39,11 +39,11 @@
         <url>https://issues.apache.org/jira/browse/EMAIL</url>
     </issueManagement>
 
-    <scm>
+    <!--scm>
         <connection>scm:git:https://gitbox.apache.org/repos/asf/commons-email</connection>
         <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/commons-email</developerConnection>
         <url>https://gitbox.apache.org/repos/asf/commons-email</url>
-    </scm> 
+    </scm--> 
 
     <developers>
         <developer>
@@ -389,6 +389,7 @@
             <configuration>
               <excludes>
                 <exclude>src/test/resources/eml/**</exclude>
+                <exclude>Jenkinsfile</exclude>
               </excludes>
             </configuration>
           </plugin>
@@ -434,13 +435,13 @@
         </plugins>
     </build>
 
-    <distributionManagement>
+    <!--distributionManagement>
       <site>
         <id>apache.website</id>
         <name>Apache Website</name>
         <url>${commons.deployment.protocol}://people.apache.org/www/commons.apache.org/email/</url>
       </site>    
-    </distributionManagement>
+    </distributionManagement-->
     
     <reporting>
         <plugins>
@@ -481,6 +482,7 @@
                 <configuration>
                     <excludes>
                         <exclude>src/test/resources/eml/**</exclude>
+                        <exclude>Jenkinsfile</exclude>
                     </excludes>
                 </configuration>
             </plugin>            
@@ -549,17 +551,36 @@
         </build>
       </profile>
           
-        <profile>
+        <!--profile>
             <id>rc</id>
-            <distributionManagement>
+            <distributionManagement-->
                 <!-- Cannot define in parent ATM, see COMMONSSITE-26 -->
-                <site>
+                <!--site>
                     <id>apache.website</id>
                     <name>Apache Commons Release Candidate Staging Site</name>
                     <url>${commons.deployment.protocol}://people.apache.org/www/people.apache.org/builds/commons/${commons.componentid}/${commons.release.version}/${commons.rc.version}/site</url>
                 </site>
             </distributionManagement>
-        </profile>        
+        </profile-->        
     </profiles>
-    
+
+  <scm>
+    <connection>scm:git:git@github.com:Axway/commons-email.git</connection>
+    <url>scm:git:git@github.com:Axway/commons-email.git</url>
+    <developerConnection>scm:git:git@github.com:Axway/commons-email.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+      <id>releases</id>
+      <name>artifactory-releases</name>
+      <url>${env.ARTIFACTORY_RELEASE_URL}</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>artifactory-snapshots</name>
+      <url>${env.ARTIFACTORY_SNAPSHOT_URL}</url>
+    </snapshotRepository>
+  </distributionManagement>
 </project>
