@@ -394,7 +394,7 @@
             </configuration>
           </plugin>
           <!-- Declaration place matters must be after gpg. -->
-          <plugin>
+          <!--plugin>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-release-plugin</artifactId>
             <version>1.8.0</version>
@@ -424,7 +424,7 @@
                 </goals>
               </execution>
             </executions>
-          </plugin>
+          </plugin-->
           <plugin>
             <groupId>com.github.spotbugs</groupId>
             <artifactId>spotbugs-maven-plugin</artifactId>
