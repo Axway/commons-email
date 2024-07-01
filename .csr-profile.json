@@ -16,7 +16,8 @@
     "jira": false,
     "whitesource": false,
     "appspider": false,
-    "insightvm": false
+    "insightvm": false,
+    "blackduck": false
   },
   "suppressions": [
   ]
